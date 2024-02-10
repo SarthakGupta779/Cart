@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+    <form action="#" method="POST">
+        {% csrf_token%}
+        <div class="form-group">
+         <li> <label for="exampleInputEmail1">Email address</label>
+          <input type="email" name="email" placeholder="Enter email"></li><br>
+         <!-- <li> <label for="exampleInputPassword1">Enter otp</label>
+          <input type="text" name="otp" placeholder="enter your otp"></li><br> -->
+         
+        </div>
+        <button type="submit"><b>Login</b></button><br>
+        don't have account<a href="/register/">Register</a>
+      </form>
+    
+</body>
+</html>

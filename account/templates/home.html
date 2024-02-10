@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<td>
+    <h2>Welcome to our store!</h2>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'cart' %}">Cart</a></li>
+        <li><a href="{% url 'orders' %}">Order</a></li>
+        <li><a href="#">Profile</a></li>
+    </ul>
+    {% if products %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <!-- Add more headers if needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>${{ product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <!-- Add more cells if needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+    
+    <!-- Add a link to add new product (optional) -->
+   <!-- <td> <a href="#">Add New Product</a></td> -->
+   <td> <a href="{% url 'buynow' %}">Buy Now</a> </td>
+    <td><a href="{% url 'add_to_cart' %}">Add to Cart</a> </td>
+   <td> <a href="{% url 'productrating' %}">Rating</a></td>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+</head>
+<body>
+    <h1>Order List</h1>
+    <a href="{% url 'home' %}">Home Page</a>
+    <ul>
+        {% for order in orders %}
+        <li>
+            <strong>First Name:</strong> {{ order.first_name }}<br>
+            <strong>Product Name:</strong> {{ order.name }}<br>
+            <strong>Address:</strong> {{ order.address }}<br>
+            <strong>Quantity:</strong> {{ order.quantity }}<br>
+            <strong>Payment Type:</strong> {{ order.get_payment_type_display }}<br>
+            <strong>Created At:</strong> {{ order.created_at }}
+        </li>
+        {% empty %}
+        <li>No orders found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
