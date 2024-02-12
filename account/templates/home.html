@@ -11,7 +11,7 @@
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'cart' %}">Cart</a></li>
         <li><a href="{% url 'orders' %}">Order</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="{% url 'profile'%}">Profile</a></li>
     </ul>
     {% if products %}
         <table>
@@ -37,11 +37,8 @@
     {% else %}
         <p>No products available.</p>
     {% endif %}
-    
-    <!-- Add a link to add new product (optional) -->
-   <!-- <td> <a href="#">Add New Product</a></td> -->
    <td> <a href="{% url 'buynow' %}">Buy Now</a> </td>
-    <td><a href="{% url 'add_to_cart' %}">Add to Cart</a> </td>
+    <td><a href="{% url 'addtocart' %}">Add to Cart</a> </td>
    <td> <a href="{% url 'productrating' %}">Rating</a></td>
 </body>
 </html>

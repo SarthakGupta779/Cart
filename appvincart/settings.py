@@ -177,3 +177,10 @@ SIMPLE_JWT = {
     "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
     "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
 }
+
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT= 587
+EMAIL_HOST_USER= 'sarthakgupta779@gmail.com'
+EMAIL_HOST_PASSWORD= 'zffa wayd ctxa isax'
+EMAIL_USE_TLS= True

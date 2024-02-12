@@ -10,11 +10,9 @@
         <div class="form-group">
          <li> <label for="exampleInputEmail1">Email address</label>
           <input type="email" name="email" placeholder="Enter email"></li><br>
-         <!-- <li> <label for="exampleInputPassword1">Enter otp</label>
-          <input type="text" name="otp" placeholder="enter your otp"></li><br> -->
-         
+      
         </div>
-        <button type="submit"><b>Login</b></button><br>
+      <a href="{% url 'reset' %}"> <button type="submit"><b>Login</b></button></a> 
         don't have account<a href="/register/">Register</a>
       </form>
     

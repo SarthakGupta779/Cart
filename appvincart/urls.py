@@ -13,13 +13,16 @@ urlpatterns = [
     path('forget/',views.forget,name='forget'),
     path('reset/',views.reset,name='reset'), 
     path('register/', views.user_registration, name='register'),
-    path('productrating/',views.product_rating,name="productrating"),
-    path('buynow/', views.buynow, name='buynow'),
+    path('product-rating/',views.product_rating,name="productrating"),
+    path('buy-now/', views.buynow, name='buynow'), 
     path('orders/',views.orderlist,name='orders'),
-    path('addtocart/',views.add_to_cart, name='add_to_cart'),
+    path('add-to-cart/',views.add_to_cart, name='addtocart'),
     path('cart/', views.cart_view, name='cart'),
-    path('delete-from-cart/<int:cart_item_id>/',views.delete_from_cart, name='delete_from_cart'),
-    # path('edit-profile/',views.edit_profile, name='edit_profile'),
+    path('delete-from-cart/<int:cart_item_id>/',views.delete_from_cart, name='deletefromcart'),
+    path('view-profile',views.view_profile,name='profile'),
+    path('logout/',views.user_logout,name='logout'),
+    path('edit-profile/',views.edit_profile, name='edit_profile'),
+    path('change-password',views.change_password,name='change_password'),
     
 ]
 

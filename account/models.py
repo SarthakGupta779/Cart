@@ -33,6 +33,11 @@ class User(AbstractBaseUser):
       max_length=255,
       unique=True,
   )
+  ROLE_CHOICES = [
+        ('customer', 'Customer'),
+        ('merchant', 'Merchant'),
+    
+  ]
   id = models.BigAutoField(primary_key=True)
   first_name = models.CharField(max_length=50)
   last_name = models.CharField(max_length=50)
@@ -44,13 +49,8 @@ class User(AbstractBaseUser):
   is_admin = models.BooleanField(default=False)
   created_at = models.DateTimeField(auto_now_add=True,null=True)
   updated_at = models.DateTimeField(auto_now=True,null=True)
-#   ROLE_CHOICES = [
-#         ('customer', 'Customer'),
-#         ('manager', 'Manager'),
-#         ('paypal', 'PayPal'),
-#         # ('cash','Cash'),
-
-#     ]
+  role_type = models.CharField(max_length=20, choices=ROLE_CHOICES)
+  
   
 
   objects = UserManager()
@@ -115,8 +115,8 @@ class BuyNow(models.Model):
         ('paypal', 'PayPal'),
     ]
 
-    first_name = models.ForeignKey(User, on_delete=models.CASCADE,db_column='first_name')
-    name = models.ForeignKey(Product, on_delete=models.CASCADE,db_column='name')
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE,db_column='user_id')
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE,db_column='product_id')
     address = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField()
     payment_type = models.CharField(max_length=20, choices=PAYMENT_CHOICES)
@@ -124,8 +124,13 @@ class BuyNow(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 class CartItem(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, db_column='first_name', related_name='cart_items')
-    product_name = models.ForeignKey(Product, on_delete=models.CASCADE, db_column='name', related_name='cart_items')
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, db_column='user_id', related_name='cart_items')
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE, db_column='product_id', related_name='cart_items')
     product_price = models.ForeignKey(Product, on_delete=models.CASCADE, db_column='price', related_name='cart_price')
     quantity = models.PositiveIntegerField(default=1, validators=[MinValueValidator(1)])
     added_at = models.DateTimeField(auto_now_add=True)
+
+class OTPModel(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE,db_column='user_id')
+    otp = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)

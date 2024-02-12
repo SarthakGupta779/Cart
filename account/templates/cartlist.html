@@ -13,9 +13,9 @@
                 <strong>Product Name:</strong> {{ cart_item_form.instance.product_name }} <br>
                 <strong>Price:</strong> ${{ cart_item_form.instance.product_price }} <br>
                 <strong>Quantity:</strong> {{ cart_item_form.instance.quantity }} <br>
-                <!-- Link to save the item for later -->
+            
                 <a href="{% url 'home' %}">Save for Later</a> 
-                <!-- Link to delete the item from the cart -->
+                
                 <a href="{% url 'delete_from_cart' cart_item_form.instance.pk %}">Delete</a>
             </li>
         {% empty %}
